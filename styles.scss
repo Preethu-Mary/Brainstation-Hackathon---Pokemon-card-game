@@ -1,0 +1,66 @@
+@use './partials/keyframes' as *;
+@use './partials/colors' as *;
+@use './partials/mixins' as *;
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(255, 192, 203); 
+    margin: 0;
+}
+
+.pulsating-button {
+    background-color: white;
+    border: 3px solid pink;
+    text-align: center;
+    margin-top: 30px;
+    color: pink;
+    font-size: 2rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    animation: pulsate 1.5s infinite;
+
+    &:hover {
+        background-color: pink;
+        color: white;
+    }
+}
+
+.banner {
+  color: $white;
+  text-align: center;
+  padding: 20px;
+  font-size: 2em; 
+  font-weight: 700;
+  margin-bottom: 30px; 
+
+  @include desktop {
+    font-size: 3em;
+  }
+ 
+}
+
+#sound-toggle {
+    font-size: 3rem;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+}
+
+#sound-toggle:hover {
+    color: $ash;
+}
+
+
+
+
+
