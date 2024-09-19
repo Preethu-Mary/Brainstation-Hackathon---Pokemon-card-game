@@ -46,9 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function createPokemonCards(pokemonList) {
             const container = document.getElementById('pokemon-container');
 
-            pokemonList.forEach(pokemonData => {
+            pokemonList.forEach((pokemonData, index) => {
                 const pokemonCard = document.createElement('div');
                 pokemonCard.classList.add('pokemon-card');
+                pokemonCard.id = `card-${index}`; 
 
                 const cardInner = document.createElement('div');
                 cardInner.classList.add('pokemon-card-inner');
@@ -96,20 +97,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleCardClick(pokemonCard, pokemonData) {
         if (selectedCards.length < 2 && !matchedCards.includes(pokemonData.name)) {
             pokemonCard.classList.remove('flipped');
-            selectedCards.push(pokemonData.name);
-    
+
+            if (!selectedCards.includes(pokemonCard)) {
+                selectedCards.push(pokemonCard);
+            }
+            
             if (selectedCards.length === 2) {
                 checkMatch();
             }
         }
     }
 
-    // Check for a match
     function checkMatch() {
         const cards = document.querySelectorAll('.pokemon-card');
         setTimeout(() => {
-            if (selectedCards[0] === selectedCards[1]) {
-                matchedCards.push(selectedCards[0]);
+            if (selectedCards[0].querySelector('img').alt === selectedCards[1].querySelector('img').alt) {
+                matchedCards.push(selectedCards[0].querySelector('img').alt);
                 selectedCards = [];
             } else {
                 cards.forEach(card => {
