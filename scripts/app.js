@@ -120,10 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         card.classList.add('flipped');
                     }
                 });
+
                 selectedCards = [];
             }
         }, 1000);
-}
+    }
 
     displayPokemons();
 });
