@@ -1,24 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=6&offset=2'; // URL to get a list of 6 Pokémon
+
+    const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=6&offset=2'; 
+    let selectedCards = [];
+    let matchedCards = [];  
 
     async function fetchPokemonList() {
         try {
-            const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            return data.results; // Contains the list of Pokémon
+            const response = await axios.get(apiUrl);
+            console.log(response.data);
+            return response.data.results;
         } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
+            console.error('There was a problem with the get operation pokemon list:', error);
         }
     }
 
     async function fetchPokemonData(pokemonUrl) {
         try {
-            const response = await fetch(pokemonUrl);
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
+            const response = await axios.get(pokemonUrl);
+            return response.data;
         } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
+            console.error('There was a problem with the get operation of pokemon details:', error);
         }
     }
 
@@ -34,23 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!pokemons) return;
 
-        // Fetch detailed data for each Pokémon
         const pokemonDetailsPromises = pokemons.map(pokemon => fetchPokemonData(pokemon.url));
         let pokemonDetails = await Promise.all(pokemonDetailsPromises);
         
-        // Double the array
-        pokemonDetails = pokemonDetails.concat(pokemonDetails);
-
-        // Shuffle the Pokémon details
-        shuffleArray(pokemonDetails);
-
+        pokemonDetails = pokemonDetails.concat(pokemonDetails);  // Double the array
+       
+        shuffleArray(pokemonDetails);  // Shuffle the Pokémon details
+       
         // Function to create Pokémon cards
         function createPokemonCards(pokemonList) {
             const container = document.getElementById('pokemon-container');
-            if (!container) {
-                console.error('Container with ID "pokemon-container" not found.');
-                return;
-            }
 
             pokemonList.forEach(pokemonData => {
                 const pokemonCard = document.createElement('div');
@@ -71,22 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.alt = pokemonData.name;
                 cardFront.appendChild(img);
 
-                // Create and append Pokémon name to the back of the card
                 const name = document.createElement('p');
                 name.textContent = pokemonData.name;
                 cardFront.appendChild(name);
 
-                // Append front and back to cardInner
                 cardInner.appendChild(cardFront);
                 cardInner.appendChild(cardBack);
 
-                // Append cardInner to the main card
                 pokemonCard.appendChild(cardInner);
 
-                // Append the card to the container
                 container.appendChild(pokemonCard);
 
-                // Add click event listener to the card
                 pokemonCard.addEventListener('click', () => {
                     handleCardClick(pokemonCard, pokemonData);
                 });
@@ -96,40 +85,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // Display the Pokémon cards in a grid
         createPokemonCards(pokemonDetails);
            
-        // Flip cards after 4 seconds
-        setTimeout(() => {
-            const cards = document.querySelectorAll('.pokemon-card');
-            cards.forEach(card => {
-                card.classList.add('flipped');
-            });
-        }, 3000);
+        const cards = document.querySelectorAll('.pokemon-card');
+        cards.forEach(card => {
+            card.classList.add('flipped');
+        });
+
     }
-    let firstCard = null;
-    let secondCard = null;
-    let firstCardData;
-    let secondCardData;
+   
     
     function handleCardClick(pokemonCard, pokemonData) {
-        if (!firstCard && !secondCard) {
-            pokemonCard.classList.toggle('flipped');
-            firstCard = pokemonCard;
-            firstCardData = pokemonData;
-            return
-        }
-        else if (firstCard && (!secondCard)) {
-            pokemonCard.classList.toggle('flipped');
-            secondCard = pokemonCard
-            secondCardData = pokemonData;
-            if (firstCardData.name !== secondCardData.name) {
-                setTimeout(() => {
-                    firstCard.classList.toggle('flipped');
-                    secondCard.classList.toggle('flipped');
-                    firstCard = null;
-                    secondCard = null;
-                }, 1000);
+        if (selectedCards.length < 2 && !matchedCards.includes(pokemonData.name)) {
+            pokemonCard.classList.remove('flipped');
+            selectedCards.push(pokemonData.name);
+    
+            if (selectedCards.length === 2) {
+                checkMatch();
             }
         }
     }
+
+    // Check for a match
+    function checkMatch() {
+        const cards = document.querySelectorAll('.pokemon-card');
+        setTimeout(() => {
+            if (selectedCards[0] === selectedCards[1]) {
+                matchedCards.push(selectedCards[0]);
+                selectedCards = [];
+            } else {
+                cards.forEach(card => {
+                    if (!matchedCards.includes(card.querySelector('img').alt)) {
+                        card.classList.add('flipped');
+                    }
+                });
+                selectedCards = [];
+            }
+        }, 1000);
+}
 
     displayPokemons();
 });
