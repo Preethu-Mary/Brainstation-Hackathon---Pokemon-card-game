@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=6&offset=2'; 
     const audio = document.getElementById('background-music');
     const soundToggleButton = document.getElementById('sound-toggle');
+    const closeButton = document.getElementById('close-banner');
     const gameRulesButton = document.getElementById('game-rules');
     const banner = document.getElementById("banner");
     const bannerMessage = document.getElementById("banner-message");
