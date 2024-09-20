@@ -139,14 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const img = document.createElement('img');
                 img.src = pokemonData.sprites.front_default; // Image URL
                 img.alt = pokemonData.name;
-
                 cardFront.appendChild(img);
-
-                const ball_img = document.createElement('img');
-                ball_img.src = "assets/Poke_Ball.webp";
-                ball_img.alt = "Pokemon ball";
-                cardBack.appendChild(ball_img);
-                ball_img.classList.add("ball_img");
 
                 const name = document.createElement('p');
                 name.textContent = pokemonData.name;
