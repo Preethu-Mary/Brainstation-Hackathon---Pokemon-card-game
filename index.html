@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Card - Match & Win</title>
-    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Pokémon Cards</title>
+    <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="/scripts/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
 </head>
 <body>
-        <div class="banner">
-            Welcome to Pokémon Card - Match & Win Game
+    <audio id="background-music" src="/assets/Maxim Novak - 02 Your Love.mp3" loop></audio>
+    <i id="sound-toggle" class="fas fa-volume-mute"></i>
+    <div id="pokemon-container" class="pokemon-container"></div>
+    <div class="turn-board__container">
+        <div class="turn-board__header">
+            <h3 class="header__title">Tries Remaining</h3>
         </div>
-        <a href="./pages/app.html"><button class="pulsating-button">Start Game!</button></a>
-      
-
+        <div class="turn-board__body">
+            <div class="body__container">
+                <h3 id="num__tries">10</h3>
+            </div>
+        </div>
+    </div>
+    <div id="banner" class="banner">
+        <div class="banner-message" id="banner-message"></div>
+    </div>
 </body>
 </html>

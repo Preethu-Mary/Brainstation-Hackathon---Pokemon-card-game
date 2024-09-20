@@ -167,13 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+
+    //Function to update the game status
     function showBanner(message) {
         bannerMessage.innerText = message; 
         banner.classList.add('active');
     }
 
+
+    //Function to check if the game is over
     function checkGameOver() {
-        console.log(matchedCards);
         if (turnCount <= 0 && matchedCards.length !== 6) {
             console.log(turnCount <= 0, matchedCards.length !== 6);
             showBanner("Try again!");
