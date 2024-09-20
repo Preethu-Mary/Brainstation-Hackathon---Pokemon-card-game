@@ -37,16 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSoundOn = false;
     sessionStorage.setItem('sound', 'off');
 
-    gameRulesButton.addEventListener('click', () => {
-        showBanner(rules);
-        bannerMessage.classList.add('rules');
-    });
-
-    closeButton.addEventListener('click', () => {
-        banner.classList.remove('active'); 
-    });
-
-
     // Function to toggle sound on and off
     function toggleSound() {
         if (isSoundOn) {
@@ -214,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         banner.classList.add('active');
     }
 
-
     //Function to check if the game is over
     function checkGameOver() {
         if (turnCount <= 0 && matchedCards.length !== 6) {
@@ -225,6 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    gameRulesButton.addEventListener('click', () => {
+        showBanner(rules);
+        bannerMessage.classList.add('rules');
+    });
+
+    closeButton.addEventListener('click', () => {
+        banner.classList.remove('active'); 
+    });
+    
     displayPokemons();
 });
 
