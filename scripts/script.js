@@ -38,9 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sessionStorage.setItem('sound', 'off');
 
     gameRulesButton.addEventListener('click', () => {
-        bannerMessage.classList.add('rules');
         showBanner(rules);
-        
     });
 
     closeButton.addEventListener('click', () => {
