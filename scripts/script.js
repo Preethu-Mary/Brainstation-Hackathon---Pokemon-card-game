@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameRulesButton = document.getElementById('game-rules');
     const banner = document.getElementById("banner");
     const bannerMessage = document.getElementById("banner-message");
-    const closeButton = document.getElementById('close-banner');
     const rules = `Objective:
 
     Match all pairs of cards within a limited number of turns.
