@@ -141,8 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     turnCount--;
                     document.getElementById("num__tries").innerText = turnCount;
                 }
-            }
-            checkGameOver();   
+            } 
             
         }
     }
@@ -164,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 selectedCards = [];
             }
+            checkGameOver();  
         }, 1000);
     }
 
@@ -173,9 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkGameOver() {
+        console.log(matchedCards);
         if (turnCount <= 0 && matchedCards.length !== 6) {
+            console.log(turnCount <= 0, matchedCards.length !== 6);
             showBanner("Try again!");
-        } else if (matchedCards.length === 6){
+        } 
+        if (matchedCards.length === 6){
+            console.log(turnCount <= 0, matchedCards.length !== 6);
             showBanner("You Win!");
         }
     }
