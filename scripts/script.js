@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameRulesButton.addEventListener('click', () => {
         showBanner(rules);
         bannerMessage.classList.add('rules');
+        console.log(closeButton);
     });
 
     closeButton.addEventListener('click', () => {
