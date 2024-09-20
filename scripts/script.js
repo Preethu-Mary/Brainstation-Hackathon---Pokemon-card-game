@@ -36,15 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let matchedCards = [];  
     let isSoundOn = false;
     sessionStorage.setItem('sound', 'off');
-    
-    closeButton.addEventListener('click', () => {
-        banner.classList.remove('active'); 
-    });
 
     gameRulesButton.addEventListener('click', () => {
         showBanner(rules);
         bannerMessage.classList.add('rules');
     });
+
+    closeButton.addEventListener('click', () => {
+        banner.classList.remove('active'); 
+    });
+
 
     // Function to toggle sound on and off
     function toggleSound() {
