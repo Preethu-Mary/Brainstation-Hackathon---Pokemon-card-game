@@ -37,6 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSoundOn = false;
     sessionStorage.setItem('sound', 'off');
 
+    gameRulesButton.addEventListener('click', () => {
+        showBanner(rules);
+        bannerMessage.classList.add('rules');
+    });
+
+    closeButton.addEventListener('click', () => {
+        banner.classList.remove('active'); 
+    });
+
+
     // Function to toggle sound on and off
     function toggleSound() {
         if (isSoundOn) {
@@ -214,15 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showBanner("You Win!");
         }
     }
-
-    gameRulesButton.addEventListener('click', () => {
-        showBanner(rules);
-        bannerMessage.classList.add('rules');
-    });
-
-    closeButton.addEventListener('click', () => {
-        banner.classList.remove('active'); 
-    });
 
     displayPokemons();
 });
