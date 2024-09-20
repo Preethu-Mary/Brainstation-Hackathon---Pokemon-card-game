@@ -3,8 +3,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=6&offset=2'; 
     const audio = document.getElementById('background-music');
     const soundToggleButton = document.getElementById('sound-toggle');
+    const gameRulesButton = document.getElementById('game-rules');
     const banner = document.getElementById("banner");
     const bannerMessage = document.getElementById("banner-message");
+    const rules = `Objective:
+
+    Match all pairs of cards within a limited number of turns.
+
+    Game Play:
+
+    On each turn, the player can flip over two cards to reveal their faces.
+    If the cards match, they remain face up.
+    If the cards do not match, they are flipped back face down after a short delay, allowing the player to remember their positions.
+
+    Turns:
+
+    The player has a 10 turns .
+    After each turn, the player should keep track of the number of turns remaining.
+
+    Winning the Game:
+
+    The game is won by matching all pairs of cards before running out of turns.
+
+    Losing the Game:
+
+    The game is lost if the player runs out of turns before matching all pairs.`;
+
 
     let turnCount = 10;
     let selectedCards = [];
@@ -30,6 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         isSoundOn = !isSoundOn;
     }
     soundToggleButton.addEventListener('click', toggleSound);
+    gameRulesButton.addEventListener('click', () => {
+        showBanner(rules);
+        bannerMessage.classList.add('rules');
+    }
+    );
 
     //Function to fetch the pokemon cards from the API
     async function fetchPokemonList() {
@@ -178,14 +207,25 @@ document.addEventListener('DOMContentLoaded', () => {
     //Function to check if the game is over
     function checkGameOver() {
         if (turnCount <= 0 && matchedCards.length !== 6) {
-            console.log(turnCount <= 0, matchedCards.length !== 6);
             showBanner("Try again!");
         } 
         if (matchedCards.length === 6){
-            console.log(turnCount <= 0, matchedCards.length !== 6);
             showBanner("You Win!");
         }
     }
 
+    const closeButton = document.getElementById('close-banner');
+
+    closeButton.addEventListener('click', () => {
+        banner.classList.remove('active'); 
+    });
+
+    gameRulesButton.addEventListener('click', () => {
+        showBanner(rules);
+        bannerMessage.classList.add('rules');
+    });
+
     displayPokemons();
 });
+
+
