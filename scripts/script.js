@@ -215,13 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    closeButton.addEventListener('click', () => {
-        banner.classList.remove('active'); 
-    });
-
     gameRulesButton.addEventListener('click', () => {
         showBanner(rules);
         bannerMessage.classList.add('rules');
+    });
+
+    closeButton.addEventListener('click', () => {
+        banner.classList.remove('active'); 
     });
 
     displayPokemons();
