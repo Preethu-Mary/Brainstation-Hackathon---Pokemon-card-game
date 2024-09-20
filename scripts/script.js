@@ -37,6 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSoundOn = false;
     sessionStorage.setItem('sound', 'off');
 
+    //Function to update the game status and display rules
+    function showBanner(message) {
+        bannerMessage.innerText = message; 
+        banner.classList.add('active');
+    }
+
+    gameRulesButton.addEventListener('click', () => {
+        showBanner(rules);
+        bannerMessage.classList.add('rules');
+    });
+
     // Function to toggle sound on and off
     function toggleSound() {
         if (isSoundOn) {
@@ -197,27 +208,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-
-    //Function to update the game status
-    function showBanner(message) {
-        bannerMessage.innerText = message; 
-        banner.classList.add('active');
-    }
-
     //Function to check if the game is over
     function checkGameOver() {
         if (turnCount <= 0 && matchedCards.length !== 6) {
-            showBanner("Try again!");
+            showBanner("Game over!");
         } 
         if (matchedCards.length === 6){
             showBanner("You Win!");
         }
     }
-
-    gameRulesButton.addEventListener('click', () => {
-        showBanner(rules);
-        bannerMessage.classList.add('rules');
-    });
 
     closeButton.addEventListener('click', () => {
         banner.classList.remove('active'); 
