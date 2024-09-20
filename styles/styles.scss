@@ -1,4 +1,4 @@
-
+@use './partials/keyframes' as *;
 @use './partials/mixins' as *;
 
 body {
@@ -9,7 +9,7 @@ body {
     align-items: center; 
     height: 100vh; 
     margin: 1rem; 
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 #game-rules {
@@ -32,6 +32,23 @@ body {
 
 #sound-toggle:hover {
     color:  #555;
+}
+
+.welcome-title {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    font-size: 4rem; 
+    color: white; 
+    opacity: 0; 
+    animation: fadeInOut 5s forwards; 
+    z-index: 1200;
+    background-color:pink;
+    width: 100%;
+    height: 100%;
+    padding-top: 35%;
+    text-align: center;
 }
 
 .pokemon-container {
