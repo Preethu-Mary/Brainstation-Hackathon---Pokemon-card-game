@@ -1,25 +1,11 @@
-@keyframes pulsate {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(255, 105, 180, 0.5);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(255, 105, 180, 0.5);
-  }
-}
 body {
   font-family: Arial, sans-serif;
   display: flex;
   background-color: pink;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  height: 100vh; /* Full viewport height */
-  margin: 0; /* Remove default margin */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 1rem;
   overflow: hidden;
 }
 
@@ -38,8 +24,8 @@ body {
 
 .pokemon-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-gap: 20px; /* Space between cards */
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
   height: 80%;
   width: 80vw;
 }
@@ -183,4 +169,4 @@ body {
 .banner-message {
   position: relative;
   z-index: 1100;
-}/*# sourceMappingURL=app.css.map */
+}/*# sourceMappingURL=styles.css.map */

@@ -1,15 +1,14 @@
-@use './partials/keyframes' as *;
-@use './partials/colors' as *;
+
 @use './partials/mixins' as *;
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
     background-color: pink;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default margin */
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+    margin: 1rem; 
     overflow: hidden; 
 }
 
@@ -23,13 +22,13 @@ body {
 }
 
 #sound-toggle:hover {
-    color: $ash;
+    color:  #555;
 }
 
 .pokemon-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-gap: 20px; /* Space between cards */
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 20px;
     height: 80%;
     width: 80vw;
 
