@@ -15,3 +15,17 @@
         opacity: 0; 
     }
 }
+@keyframes slideIn {
+    0% {
+        transform: translate(-50%, -100%); /* Start above the page */
+        opacity: 0; /* Start invisible */
+    }
+    50% {
+        transform: translate(-50%, 25%); /* Slide to final position */
+        opacity: 1; /* Fade in */
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+    }
+}
