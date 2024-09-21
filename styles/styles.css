@@ -32,12 +32,27 @@
 body {
   font-family: Arial, sans-serif;
   display: flex;
-  background-color: pink;
+  background-color: #ffc0cb;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 1rem;
   overflow: hidden;
+}
+
+nav {
+  position: absolute; /* Position the nav absolutely */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Add some padding if needed */
+  z-index: 1100; /* Ensure it appears above other content */
+}
+
+.logo {
+  height: 20vh; /* Logo height */
+  margin-right: 20px; /* Space between logo and icons */
 }
 
 #game-rules {
@@ -68,6 +83,7 @@ body {
   grid-gap: 20px;
   height: 80%;
   width: 80vw;
+  margin-left: 10rem;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   .pokemon-container {
